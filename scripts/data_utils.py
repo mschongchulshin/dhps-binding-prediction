@@ -7,9 +7,9 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-EXCEL_PATH = os.path.join(
+CSV_PATH = os.path.join(
     os.path.dirname(__file__),
-    "20260310_Fragment_smiles_MM_GBSA_Rankings_processed (1).xlsx"
+    "..", "data", "dataset.csv"
 )
 SMILES_COL = "Smiles"
 TARGET_COL = "MMGBSA dG Bind"
@@ -219,8 +219,8 @@ def build_bins(values: np.ndarray, n_bins: int = 10):
 
 
 # ── Core data loading ─────────────────────────────────────────────────────────
-def load_data(excel_path: str = EXCEL_PATH):
-    df = pd.read_excel(excel_path, engine="openpyxl")
+def load_data(csv_path: str = CSV_PATH):
+    df = pd.read_csv(csv_path)
     df = df[[SMILES_COL, TARGET_COL]].dropna()
     df[SMILES_COL] = df[SMILES_COL].astype(str).str.strip()
     df[TARGET_COL] = pd.to_numeric(df[TARGET_COL], errors="coerce")

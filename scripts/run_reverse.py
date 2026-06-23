@@ -40,7 +40,7 @@ import model4_bilstm as m4
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 log_device = lambda: print(f"[5Method] Device: {DEVICE}", flush=True)
 
-RESULTS_DIR = "results"
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
 TARGETS = [-30, -40]
 SEEDS = [0, 1, 2, 3, 4]
 N_GENERATE = 50
@@ -528,7 +528,7 @@ for tkey in seed_results:
         std  = {k: float(np.std( [r[k] for r in runs])) for k in METRICS}
         summary[tkey][method] = {"mean": mean, "std": std, "seeds": runs}
 
-out_path = f"{RESULTS_DIR}/reverse_5method_5seed_result.json"
+out_path = f"{RESULTS_DIR}/reverse_result.json"
 with open(out_path, "w") as f:
     json.dump(summary, f, indent=2)
 log(f"\n저장: {out_path}")

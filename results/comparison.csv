@@ -1,0 +1,2 @@
+model,fwd_RMSE_mean,fwd_RMSE_std,fwd_MAE_mean,fwd_MAE_std,fwd_R2_mean,fwd_R2_std,fwd_PCC_mean,fwd_PCC_std,rev_Validity_mean,rev_Validity_std,rev_Uniqueness_mean,rev_Uniqueness_std,rev_HitRate±3_mean,rev_HitRate±3_std
+ChemBERTa,5.0181,0.0,3.7158,0.0,0.6561,0.0,0.8258,0.0,0.85,0.0,1.0,0.0,0.1765,0.0

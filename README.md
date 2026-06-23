@@ -4,7 +4,7 @@ Code and data for "AI-guided De Novo Design of DHPS Inhibitors" (Journal of Chem
 
 ## Dataset
 
-`dataset.csv` — 1,920 DHPS fragment compounds with MM-GBSA binding energies (kcal/mol), docked using Glide XP (Schrödinger Suite 2025-4) against human DHPS (PDB: 6PGR).
+`data/dataset.csv` — 1,920 DHPS fragment compounds with MM-GBSA binding energies (kcal/mol), docked using Glide XP (Schrödinger Suite 2025-4) against human DHPS (PDB: 6PGR).
 
 ## Requirements
 
@@ -14,17 +14,19 @@ pip install -r requirements.txt
 
 ## Usage
 
-**Forward prediction (benchmarking 4 models over 31 seeds):**
+**Forward prediction (4 models, 31-seed cross-validation):**
 ```bash
-python run_ridge_31seed.py
-python run_ml_31seed.py       # LightGBM, XGBoost, SVR
-python run_gnn_31seed.py      # AttentiveFP
-python run_bilstm_31seed.py   # BiLSTM (requires results/augmented_full.pkl)
+cd scripts
+python run_ridge.py
+python run_ml.py        # LightGBM, XGBoost, SVR
+python run_gnn.py       # AttentiveFP
+python run_bilstm.py    # BiLSTM
 ```
 
 **Reverse design (5 methods × 5 seeds):**
 ```bash
-python run_reverse_5method_5seed.py
+cd scripts
+python run_reverse.py
 ```
 
 Results are saved to `results/`.

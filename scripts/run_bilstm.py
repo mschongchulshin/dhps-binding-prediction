@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data_utils import load_data, split_data
 import model4_bilstm as m4
 
-RESULTS_DIR = "results"
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 print(f"[BiLSTM-31] Device: {DEVICE}")
 
@@ -84,6 +84,6 @@ std  = {k: float(np.std( [r[k] for r in results])) for k in ["RMSE","MAE","R2","
 print(f"\n[BiLSTM-31] RMSE={mean['RMSE']:.4f}±{std['RMSE']:.4f}  R²={mean['R2']:.4f}±{std['R2']:.4f}  ρ={mean['Spearman']:.4f}±{std['Spearman']:.4f}")
 
 out = {"mean": mean, "std": std, "seeds": results}
-with open(f"{RESULTS_DIR}/bilstm_31seed_result.json", "w") as f:
+with open(f"{RESULTS_DIR}/bilstm_result.json", "w") as f:
     json.dump(out, f, indent=2)
-print(f"저장: {RESULTS_DIR}/bilstm_31seed_result.json")
+print(f"저장: {RESULTS_DIR}/bilstm_result.json")

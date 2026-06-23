@@ -46,6 +46,7 @@ print(f"Mean R²  ={mean['R2']:.4f}±{std['R2']:.4f}")
 print(f"Mean ρ   ={mean['Spearman']:.4f}±{std['Spearman']:.4f}")
 
 out = {"mean": mean, "std": std, "seeds": results}
-with open("results/ridge_31seed_result.json", "w") as f:
+import os as _os; _os.makedirs(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "results"), exist_ok=True)
+with open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "results", "ridge_result.json"), "w") as f:
     json.dump(out, f, indent=2)
-print("저장: results/ridge_31seed_result.json")
+print("저장: results/ridge_result.json")

@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 os.chdir(os.path.dirname(__file__))
 from data_utils import load_data, split_data, get_rdkit_features
 
-RESULTS_DIR = "results"
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
 df = load_data()
 
 # Load best params from Optuna
@@ -88,6 +88,6 @@ for model, runs in all_results.items():
     print(f"{model}: RMSE={mean['RMSE']:.4f}±{std['RMSE']:.4f}  "
           f"R²={mean['R2']:.4f}±{std['R2']:.4f}  ρ={mean['Spearman']:.4f}±{std['Spearman']:.4f}")
 
-with open(f"{RESULTS_DIR}/ml_31seed_result.json", "w") as f:
+with open(f"{RESULTS_DIR}/ml_result.json", "w") as f:
     json.dump(out, f, indent=2)
-print("저장: results/ml_31seed_result.json")
+print("저장: results/ml_result.json")
