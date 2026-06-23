@@ -38,3 +38,7 @@ Results are saved to `results/`.
 Shin et al., *AI-guided De Novo Design of DHPS Inhibitors*, Journal of Cheminformatics, 2026.
 
 Contact: saekomi5@korea.ac.kr
+
+## Code Availability
+
+The full code for RL-Design is currently under patent application. It will be made available upon reasonable request.
